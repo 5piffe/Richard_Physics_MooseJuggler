@@ -1,0 +1,104 @@
+Game?
+    - Pool?
+        Just plain old pool-table style
+    
+    - Minigolf
+        Simple minigolf game
+    
+    - Space program game? <- This idea for now. Just keep it simple...
+        Launch rocket, Use different gravity simulations.
+        More like a sandbox.
+        Have the engines power working against the gravitational force
+        using a custom addForce method.
+
+        [More ideas for Space program game thing]
+        Add this only after you have;
+            * Rocket launching
+            * Separate force for gravity & engine power to work "against" each other
+            * Drag (like air resistance)
+            * "Burn-time" or fuel (basically for how long you apply engine force after launch)
+
+        - Parachute that pops out when velocity.y goes from + to - (when starting to fall down)
+        - Parachute "size" affects fallspeed (drag shit, maybe this is too complicated)
+
+        - Have vector3.up towards the center of something. and calculate gravity towards that instead
+            of just falling down. Then you could have a huge sphere as "planet" and just keep it
+            infinit gravity-field around it.
+        
+        !! New plan: Spaceship isn't a launch it's your vehicle.
+            You hold space to boost and control angle with the mouse. There's only
+            a cirtain amount of fuel so you have to "tap-boost" and be restrictive
+            to make it through the level. Maybe there's pickups like fuel boosts on
+            the way. And some dangerouse shit.
+
+            Instantiate squirrel gib but with ship-parts (cubes or so) when hitting ground.
+            Use bouyancy physics if landing in "water" !!
+
+        - Hoovering spheres in the air. When you collide you "shoot" the sphere
+            rocket legue style. And it's lifetime-counter goes down.
+            when it's lifetime is over it explodes, giving you fuel
+            and instantiates smaller spheres which have gravity on.
+            they fall to the ground and bounce a little. -lifetime 
+
+
+What's up?
+    Base:
+    [V] Edge detection of plane
+            [V]: Semi-fixed. Need to test some more shit.
+    [X] Static ie. shouldn't bounce no more. Fix so it doesn't go thru gound.
+    [ ] Drag / Air resistance
+    [V] Ball react to plane(s) instead of the other way around
+        to be able to build ship-cube of planes so we can push ball.
+            [V]: Semi-fixed. Need to test when edge detection works.
+    
+    Other:
+    [X] Fuel (timer for how long you can boost).
+    [ ] Simple UI for displaying fuel && survivaltime(score).
+        Maybe add other pickups for score multiplyers or something.
+    [X] Explosion (instantiate smaller spheres that are bouncing and then "smokepuffing away")
+    [ ] Explode on ground impact if (velocity is too high || fuel = empty)
+    [X] Hoovering spheres that fall to ground (lose their hoover ability and gravity pulls them)
+        and explode if you hit them. Hitting them will refuel your ship.
+    [ ] Some kind of danger or way to make it harder the longer you survive.
+
+
+    - Fuck this.... SnowPlowJugglerGame.
+        snowplow gliding on icy surface back & forth.
+        tilt plow with mouse. left/right with A/D.
+        bounce snowball for as many times you can.
+
+        plow will rotate back & forth with increased speed & angle for each bounce.
+
+        drop ball = game over.
+
+        :( 
+
+    
+    [ ] Clamp mouse tilt for elk
+    [ ] Limit sides of playzone so you stop if you are max left/right
+    [ ] Increase tilt-speed & angle for plow for each score
+    [ ] 1 PowerUp like "double score for x seconds"
+    [ ] Restart if dead
+    [V] Score & HighScore
+        V: Score is  fixed but need to NOT bring score when ball on ground.
+            Highscore is not fixed.
+
+
+
+
+    
+************
+* FORMULAS *
+************
+[FORCE, GRAVITY...]
+f: Force
+m: Mass
+a: Acceleration
+v: Velocity
+p: Position
+
+f = m * a
+a = f / m
+v(1) = v(0) + a * deltaTime
+p(1) = p(0) + v * deltaTime
+
