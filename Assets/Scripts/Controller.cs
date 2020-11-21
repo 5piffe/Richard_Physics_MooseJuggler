@@ -49,7 +49,7 @@ public class Controller : MonoBehaviour
 		if (snowBall.transform.position.y < snowBall.GetComponent<PhysicalObject>().SphereRadius)
 		{
 			gm.currentScore = 0;
-			SceneManager.LoadScene("01");
+			SceneManager.LoadScene("MooseJuggler");
 		}
 	}
 
